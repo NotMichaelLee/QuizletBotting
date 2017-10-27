@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+    <title>Spanish Solver by RubbaBoy</title>
+    <style>
+        body {
+            font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+            font-size: 100%;
+        }
+        #status {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            width: 350px;
+            padding: 10px;
+            height: auto;
+        }
+
+        #title {
+            text-align: center;
+        }
+
+        #by {
+            width: 100%;
+            text-align: center;
+            display: block;
+            position: absolute;
+            margin-top: -30px !important;
+        }
+
+        #italics {
+            text-align: center;
+        }
+
+        .activate_button {
+            width: 80%;
+            height: 50px;
+            left: 10%;
+            margin: 0 auto;
+            background-color: #00b0ff;
+            display: block;
+            font-size: 24px;
+            margin-top: 25px !important;
+        }
+
+        input[type=range]{
+            -webkit-appearance: none;
+            margin-left: 10px;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 300px;
+            height: 5px;
+            background: #ddd;
+            border: none;
+            border-radius: 3px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #00b0ff;
+            margin-top: -4px;
+            cursor: pointer;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #ccc;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            /*width: 30px;*/
+            width: auto;
+            height: 17px;
+        }
+
+        .switch input {display:none;}
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 13px;
+            width: 13px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3; /* Not halved */
+        }
+
+        input:checked + .slider:before {
+            -webkit-transform: translateX(13px);
+            -ms-transform: translateX(13px);
+            transform: translateX(13px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 17px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%; /* Not halved */
+        }
+
+        .ttt6 {
+            margin-left: 210px;
+            width: 30px;
+        }
+
+        .inl {
+            display: inline;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #small_help {
+            width: 40%;
+            height: 30px;
+            margin-top: 15px !important;
+            font-size: 17px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="status">
+    <h1 id="title">Spanish Solver</h1>
+    <small id="by"><i id="italics">by RubbaBoy</i></small>
+    <button class="activate_button" id="bknelson" >bknelson</button>
+    <button class="activate_button" id="conjuguemos" >Conjuguemos</button>
+    <button class="activate_button" id="123teachme" >123teachme</button>
+    <button class="activate_button" id="quizlet" >Quizlet</button>
+    <button class="activate_button" id="small_help">Help</button>
+    <!--<a class="activate_button" id="small_help" href="help.html">Help</a>-->
+    <br>
+    <h2>Quizlet Settings</h2>
+    <h3>General</h3>
+    <label class="switch" for="avail_icons">
+        <p class="inl">Show game availability icons</p>
+        <input class="ttt6 inl" id="avail_icons" type="checkbox">
+        <div class="slider round ttt6 inl"></div>
+    </label>
+    <br>
+    <label for="scatter_fader">Scatter Time</label><input type="range" min="0" max="10" value="5" id="scatter_fader" step="0.1"><output for="fader" id="scatter_delay">5</output>
+    <br>
+    <label for="copy_delay_fader">Copy Delay</label><input type="range" min="0" max="25" value="5" id="copy_delay_fader" step="1"><output for="fader" id="copy_delay">5</output>
+    <br>
+    <label for="answer_delay_fader">Result Delay</label><input type="range" min="0" max="5000" value="1000" id="answer_delay_fader" step="100"><output for="fader" id="answer_delay">1000</output>
+    <br>
+    <label for="transition_delay_fader">Transition Delay</label><input type="range" min="0" max="1000" value="100" id="transition_delay_fader" step="50"><output for="fader" id="transition_delay">100</output>
+
+    <h3>Gravity</h3>
+    <label for="gravity_points">Gravity Points</label><input style="margin-left: 10px;" type="number" min="0" max="4294967295" value="1000000" id="gravity_points">
+
+    <h3>Test Written</h3>
+    <label for="written_paste_delay_fader">After Paste Delay</label><input type="range" min="0" max="25" value="5" id="written_paste_delay_fader" step="1"><output for="fader" id="written_paste_delay">5</output>
+    <h3>Test Matching</h3>
+    <label for="matching_paste_delay_fader">After Paste Delay</label><input type="range" min="0" max="25" value="5" id="matching_paste_delay_fader" step="1"><output for="fader" id="matching_paste_delay">5</output>
+</div>
+<script src="jquery.min.js"></script>
+<script src="controls.js"></script>
+<script src="clipboard.min.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
